@@ -1,5 +1,6 @@
 package com.test1.b1.todo.controller;
 
+import com.test1.b1.common.dto.PageResultDTO;
 import com.test1.b1.todo.dto.TodoAddDTO;
 import com.test1.b1.todo.dto.TodoListDTO;
 import com.test1.b1.todo.service.TodoService;
@@ -45,6 +46,11 @@ public class TodoController {
     @GetMapping("get2")
     public List<TodoListDTO> get2() {
         return todoService.getList();
+    }
+
+    @GetMapping("get3")
+    public PageResultDTO<TodoListDTO> get3() {
+        return todoService.getSearchList();
     }
 
 }

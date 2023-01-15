@@ -105,4 +105,6 @@ public class TodoRepositoryTests {
         Page<Object[]> result = todoRepository.searchListWithTodoSearch(pageable, searchDTO);
         log.info(result);
     }
+
+
 }

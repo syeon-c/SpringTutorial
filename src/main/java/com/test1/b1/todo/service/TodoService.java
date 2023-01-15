@@ -17,6 +17,7 @@ public interface TodoService {
     PageResultDTO<TodoListDTO> getSearchList();
 
     void add(TodoDTO todoDTO);
+
     default Todo getEntity(TodoDTO todoDTO) {
 
         Todo todo = Todo.builder()
