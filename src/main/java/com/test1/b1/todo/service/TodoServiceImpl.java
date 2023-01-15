@@ -1,5 +1,6 @@
 package com.test1.b1.todo.service;
 
+import com.test1.b1.common.dto.PageResultDTO;
 import com.test1.b1.todo.domain.Todo;
 import com.test1.b1.todo.dto.TodoDTO;
 import com.test1.b1.todo.dto.TodoListDTO;
@@ -72,5 +73,29 @@ public class TodoServiceImpl implements TodoService {
         Page<Object[]> result = todoRepository.searchListWithCount(pageable);
 
         return null;
+    }
+
+    @Override
+    public PageResultDTO<TodoListDTO> getSearchList() {
+
+        Pageable pageable = PageRequest.of(0, 10, Sort.by("id").descending());
+
+        Page<Object[]> result = todoRepository.searchListWithCount(pageable);
+
+        List<TodoListDTO> list = result.getContent().stream().map(arr -> {
+
+            Todo entity = (Todo) arr[0];
+            long count = (long) arr[1];
+            TodoListDTO listDTO = modelMapper.map(entity, TodoListDTO.class);
+            listDTO.setReplyCount(count);
+
+            return listDTO;
+
+        }).collect(Collectors.toList());
+
+        PageResultDTO<TodoListDTO> pageResultDTO =
+                new PageResultDTO<>(list, pageable, result.getTotalElements(), result.getTotalPages());
+
+        return pageResultDTO;
     }
 }
