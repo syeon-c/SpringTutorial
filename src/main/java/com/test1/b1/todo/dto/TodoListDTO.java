@@ -22,4 +22,7 @@ public class TodoListDTO {
 
     private long replyCount;
 
+    private LocalDate regdate;
+
+    private LocalDate moddate;
 }
