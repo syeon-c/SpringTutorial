@@ -16,7 +16,6 @@ public interface TodoRepository extends JpaRepository<Todo, Long>, TodoSearch {
             ,
             countQuery = "select count(todo) from Todo todo"
     )
-
     Page<Object[]> listWithCount(Pageable pageable);
 
 
