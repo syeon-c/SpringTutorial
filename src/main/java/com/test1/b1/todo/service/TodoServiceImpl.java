@@ -147,4 +147,9 @@ public class TodoServiceImpl implements TodoService {
         return list;
 
     }
+
+    @Override
+    public void delete(Long id) {
+        todoRepository.deleteById(id);
+    }
 }

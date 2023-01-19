@@ -35,4 +35,6 @@ public interface TodoService {
 
         return todo;
     }
+
+    void delete(Long id);
 }
