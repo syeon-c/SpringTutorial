@@ -74,3 +74,12 @@ sourceSets {
         }
     }
 }
+
+bootJar {
+    mainClass = 'com.test1.b1.B1Application'
+}
+
+bootRun {
+    String activeProfile = System.properties['spring.profiles.active']
+    systemProperty 'spirng.profiles.active', activeProfile
+}
