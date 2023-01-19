@@ -59,6 +59,12 @@ public class TodoController {
     @GetMapping("list")
     public List<TodoListDTO> getList(@RequestParam(defaultValue = "0") Integer start) {
 
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+
         return todoService.getListWithStartPage(start);
     }
 
